@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+ {% load static %}
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+  {% comment %} <link rel="stylesheet" href="styles.css"> {% endcomment %}
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="index.css">
+  <title>Document</title>
+  
+</head>
+
+<body>
+
+  <div class="content">
+    <div class="text">delete_Profile</div>
+    <form id="login-form" method="post">
+	{% csrf_token %}
+      <div class="field">
+        <span class="bx bxs-user"></span>
+        <input type="username" placeholder="username" name= "username" required>
+      </div>
+
+    <button>delete </button>
+     
+    </form>
+
+    
+  </div>
+  <script>
+    const body = document.querySelector("body"),
+      modeToggle = document.querySelector(".dark-light");
+    modeToggle.addEventListener("click", () => {
+      modeToggle.classList.toggle("active");
+      body.classList.toggle("dark");
+      if (!body.classList.contains("dark")) {
+        localStorage.setItem("mode", "light-mode");
+      } else {
+        localStorage.setItem("mode", "dark-mode");
+        
+      }
+    })
+  </script>
+</body>
+
+</html>

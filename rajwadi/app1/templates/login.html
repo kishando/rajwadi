@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+ {% load static %}
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+{% comment %} <link rel="stylesheet" href="style.css"> {% endcomment %}
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="index.css">
+  <title>Document</title>
+</head>
+
+<body>
+
+  
+  <div class="content">
+    <div class="text">login</div>
+    <form id="login-form" method="post">
+	  
+      <div class="field">
+        <span class="bx bxs-user"></span>
+        {% csrf_token %}
+        <input type="username" placeholder="Username" name= "username" required>
+      </div>
+
+      
+
+      <div class="field">
+        <span class="bx bxs-lock-alt"></span>
+        <input type="password" placeholder="Password" name="password" required>
+      </div>
+
+      <button>log in </button>
+     
+    <div class="foot">
+        <a>create a Account ..</a>
+        <a href="reg" class="in">sign up</a>
+      </div>
+      <div class="foot">
+        <a>reset password </a>
+        <a href="forgot" class="in">Forgot Password?</a>
+        
+      
+      </div>
+    </form>
+
+    
+  </div>
+  <script>
+    const body = document.querySelector("body"),
+      modeToggle = document.querySelector(".dark-light");
+    modeToggle.addEventListener("click", () => {
+      modeToggle.classList.toggle("active");
+      body.classList.toggle("dark");
+      if (!body.classList.contains("dark")) {
+        localStorage.setItem("mode", "light-mode");
+      } else {
+        localStorage.setItem("mode", "dark-mode");
+        
+      }
+    })
+  </script>
+</body>
+
+</html>

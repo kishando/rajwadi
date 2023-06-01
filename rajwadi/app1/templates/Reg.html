@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+.message{
+  padding:em;
+  background:lightblue:
+  color:white:
+  width:100% ;
+}
+
+</style>
+
+   {% comment %} {% for message in messages %}
+            {% if message %} 
+            <div class="alert alert-{{ message.tags }}" role="alert">
+           {{ message }}
+            </div>
+           {% endif %}
+          {% endfor %}  {% endcomment %}
+
+
+
+
+<head>
+ {% load static %}
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+  {% comment %} <link rel="stylesheet" href="styles.css"> {% endcomment %}
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="index.css">
+  <title>Document</title>
+</head>
+
+<body>
+  {% if error_message %}
+  <p class="error">{{ error_message }}</p>
+{% endif %}
+ 
+          
+   
+ 
+  
+  <div class="content">
+    <div class="text">sign up</div>
+    <form id="login-form" method="post">
+	    {% csrf_token %}
+      <div class="field">
+        <span class="bx bxs-user"></span>
+        <input type="username" placeholder="username" name= "username" required>
+      </div>
+      <div class="field">
+        <span class="bx bxs-user"></span>
+        <input type="firstname" placeholder="firstname" name= "firstname" required>
+      </div><br>
+
+      <div class="field">
+        <span class="bx bxs-user"></span>
+        <input type="lastname" placeholder="lastname" name="lastname" required>
+      </div><br>	
+	  <div class="field">
+        <span class="bx bxs-phone"></span>
+        <input type="phone2numeric" placeholder="phone" name="phone" required="number" maxlength="10" pattern="[0-9]{9,15}" >
+      </div><br>
+	  
+	  <div class="field">
+        <span class="bx bxs-">✉</span>
+        <input type="email" placeholder="email" name="email" required>
+      </div><br>
+	  
+	  <div class="field">
+        <span class="bx bxs-lock-alt"></span>
+        <input type="password" placeholder="Password" name="pass1" required>
+      </div><br>
+	  
+	  <div class="field">
+        <span class="bx bxs-lock-alt"></span>
+        <input type="password " placeholder="confirm password" name="pass2" required>
+      </div><br>
+	
+		<button>sign up </button>
+    <div class="foot">
+      <a>back to login </a>
+      <a href="/" class="in">login</a>
+    </div>
+    </form>
+
+    
+  </div>
+  <script>
+    const body = document.querySelector("body"),
+      modeToggle = document.querySelector(".dark-light");
+    modeToggle.addEventListener("click", () => {
+      modeToggle.classList.toggle("active");
+      body.classList.toggle("dark");
+      if (!body.classList.contains("dark")) {
+        localStorage.setItem("mode", "light-mode");
+      } else {
+        localStorage.setItem("mode", "dark-mode");
+        
+      }
+    })
+  </script>
+</body>
+
+</html>
